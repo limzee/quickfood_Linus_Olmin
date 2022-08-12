@@ -1,0 +1,22 @@
+{% set active = "orders" %} {% extends "admin/base.html" %} {% block content %}
+<div class="w-full">
+  <div
+    class="w-full rounded-t bg-slate-400 flex flex-row space-x-24 text-white px-8 py-2 list-none"
+  >
+    <li class="w-36">Order id</li>
+    <li class="w-36">Food</li>
+    <li class="w-36">First name</li>
+    <li class="w-36">Last name</li>
+  </div>
+  {% for item in data %}
+  <div
+    class="w-full border-2 border-t-0 flex flex-row space-x-24 px-8 py-2 list-none"
+  >
+    <li class="w-36">{{item[0]}}</li>
+    <li class="w-36">{{item[1]}}</li>
+    <li class="w-36">{{item[2]}}</li>
+    <li class="w-36">{{item[3]}}</li>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

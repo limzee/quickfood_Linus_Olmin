@@ -1,0 +1,37 @@
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<nav
+  class="w-64 h-screen fixed left-0 top-0 bg-slate-600 text-white space-y-8 flex flex-col items-center list-none pt-24"
+>
+  <a href="/admin"><li class="w-24 menuItem cursor-pointer"><div class='w-fit {{"active" if active == "foods" else "" }}'>Foods<div></li></a>
+  <a href="/admin/orders"><li class="w-24 menuItem cursor-pointer"><div class='w-fit {{"active" if active == "orders" else "" }}'>Orders</div></li></a>
+  <a href="/admin/customers"><li class="w-24 menuItem cursor-pointer"><div class='w-fit {{"active" if active == "customers" else "" }}'>Customers</div></li></a>
+  <a href="/admin/tagtypes"><li class="w-24 menuItem cursor-pointer"><div class='w-fit {{"active" if active == "tagtypes" else "" }}'>Tag types</div></li></a>
+
+</nav>
+<div class="absolute top-4 left-4">
+  <a href="/"><- Back to admin or user page</a>
+</div>
+<div class="flex flex-row">
+  <div class="h-full w-64 bg-blue-600"></div>
+  <div class="w-full p-24">{% block content %} {% endblock %}</div>
+</div>
+
+<style>
+  .menuItem > div::after {
+    display: block;
+    width: 0%;
+    content: " ";
+    border-bottom: 2px white solid;
+    transition: all 0.3s;
+  }
+
+  .menuItem:hover > div::after {
+    width: 100%;
+  }
+
+  .active::after{
+    width: 100% !important;
+  }
+</style>

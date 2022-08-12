@@ -1,0 +1,32 @@
+{% extends "/admin/base.html" %} {% block content %}
+<center>
+  <div class="text-3xl mb-8">
+    {{customer_data[0][0] + " " + customer_data[0][1]}}
+  </div>
+  <div class="w-full">
+    <div
+      class="w-full rounded-t bg-slate-400 flex flex-row space-x-24 text-white px-8 py-2 list-none"
+    >
+      <li class="w-36">Order id</li>
+      <li class="w-36">Food</li>
+      <li class="w-36">Price</li>
+    </div>
+    {% for item in orders_data %}
+    <div
+      class="w-full border-2 border-t-0 flex flex-row space-x-24 px-8 py-2 list-none"
+    >
+      <li class="w-36">{{item[0]}}</li>
+      <li class="w-36">{{item[1]}}</li>
+      <li class="w-36">{{item[2]}} kr</li>
+    </div>
+    {% endfor %}
+    <div
+      class="w-full border-2 border-t-0 flex flex-row space-x-24 px-8 py-2 list-none"
+    >
+      <div class="w-36"></div>
+      <div class="w-36"></div>
+      <div class="w-36"><b>SUM </b> {{ orders_sum[0][0]}} kr</div>
+    </div>
+  </div>
+</center>
+{% endblock %}

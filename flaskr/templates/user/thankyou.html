@@ -1,0 +1,14 @@
+{% extends "/user/base.html" %} {% block content %}
+<div class="flex flex-col justify-center items-center h-screen w-screen">
+  <div class="text-5xl font-bold">
+    Thank you {{data[1]}} for you purchase of {{data[0][0].lower()}}
+  </div>
+  <a href="/admin">
+    <button
+      class="w-fit rounded mt-8 py-2 px-3 transition-all drop-shadow-lg text-white bg-green-500 hover:bg-green-700 hover:shadow-none hover:inner-shadow-md cursor-pointer"
+    >
+      Go to admin page
+    </button></a
+  >
+</div>
+{% endblock %}

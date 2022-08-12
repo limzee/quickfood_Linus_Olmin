@@ -1,0 +1,50 @@
+{% set active = "foods" %} {% extends "admin/base.html" %} {% block content %}
+
+<div class="w-full">
+  <div
+    class="w-full rounded-t bg-slate-400 flex flex-row space-x-48 text-white px-8 py-2 list-none"
+  >
+    <li class="w-64">Name</li>
+    <li class="w-64">Price</li>
+  </div>
+  {% for item in data %}
+  <form method="post" name="deleteForm{{item[0]}}">
+    <input name="type" value="deleteForm" type="hidden" />
+    <input name="id" value="{{item[0]}}" type="hidden" />
+    <a href="/admin/{{item[0]}}">
+      <div
+        class="w-full border-2 border-t-0 flex flex-row space-x-48 px-8 py-2 list-none relative cursor-pointer transition-all hover:scale-[99%]"
+      >
+        <li class="w-64">{{item[1]}}</li>
+        <li class="w-64">{{item[2]}} kr</li>
+        <button
+          type="submit"
+          class="absolute right-4 bg-red-600 text-white rounded px-2 py-1 transition-all hover:scale-95"
+        >
+          Delete
+        </button>
+      </div>
+    </a>
+  </form>
+  {% endfor %}
+  <form method="post" name="addFood">
+    <input name="type" value="addForm" type="hidden" />
+    <div
+      class="w-full border-2 border-t-0 flex flex-row space-x-48 px-8 py-2 list-none"
+    >
+      <input class="w-64" type="text" name="name" placeholder="Add new" />
+      <input class="w-8" type="text" name="price" placeholder="000" /> kr
+    </div>
+  </form>
+</div>
+
+<script>
+  window.onkeydown = (e) => {
+    if (e.keyCode == 13) {
+      console.log("done");
+      document.querySelector("form[name='addFood']").submit();
+    }
+  };
+</script>
+
+{% endblock %}
