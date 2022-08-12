@@ -188,16 +188,16 @@ def user():
     if tagsList:
         query = (
             "SELECT food_id FROM food_tag "
-            f"WHERE tag_id in ({tagsList}) " + "GROUP BY food_id "
+            f"WHERE tag_id in ({tagsList}) " + "GROUP BY food_id " +
             f"HAVING count(distinct tag_id) = {len(tagsList.split(','))}"
         )
         cursor.execute(query)
         foodids = cursor.fetchall()
         query = "SELECT id,name,price FROM food WHERE id in ({})".format(
-            "'" + "','".join([x[0] for x in foodids]) + "'"
+            "'" + "','".join([x[0] for x in foodids]) + "' AND deleted='0'"
         )
     else:
-        query = "SELECT id,name,price FROM food"
+        query = "SELECT id,name,price FROM food WHERE deleted='0'"
     cursor.execute(query)
     data = cursor.fetchall()
     query = "SELECT id,name from tag_type"
